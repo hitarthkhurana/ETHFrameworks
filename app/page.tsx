@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { DEFAULT_DEBUGGER_HUB_URL, createDebugUrl } from "./debug";
 import { currentURL } from "./utils";
+import { Button } from "frames.js/core";
 
 type State = {
   active: string;
@@ -78,6 +79,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
               {frameMessage?.inputText
                 ? frameMessage.inputText
                 : "Mera frame hai ye"}
+              <Button action="post">Click me</Button>;
             </div>
             {frameMessage && (
               <div tw="flex flex-col">
@@ -111,8 +113,11 @@ export default async function Home({ searchParams }: NextServerPageProps) {
         <FrameButton>
           {state?.active === "2" ? "Active" : "Inactive"}
         </FrameButton>
-        <FrameButton action="link" target={`https://www.google.com`}>
-          External
+        <FrameButton
+          action="mint"
+          target={`eip155:7777777:0x060f3edd18c47f59bd23d063bbeb9aa4a8fec6df`}
+        >
+          Mint NFT
         </FrameButton>
       </FrameContainer>
     </div>
