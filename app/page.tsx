@@ -74,12 +74,12 @@ export default async function Home({ searchParams }: NextServerPageProps) {
       >
         {/* <FrameImage src="https://framesjs.org/og.png" /> */}
         <FrameImage aspectRatio="1.91:1">
-          <div tw="w-full h-full bg-slate-700 text-white justify-center items-center flex flex-col">
+          <div tw="w-full h-full bg-purple-700 text-black justify-center items-center flex flex-col">
             <div tw="flex flex-row">
               {frameMessage?.inputText
                 ? frameMessage.inputText
-                : "Mera frame hai ye"}
-              <Button action="post">Click me</Button>;
+                : "WELCOME TO FRAMEWORKS CASINO !!!"}
+              <Button action="post">Click me</Button>
             </div>
             {frameMessage && (
               <div tw="flex flex-col">
@@ -106,12 +106,12 @@ export default async function Home({ searchParams }: NextServerPageProps) {
             )}
           </div>
         </FrameImage>
-        <FrameInput text="put some text here" />
+        <FrameInput text="TRY YOUR LUCK HERE!!!" />
         <FrameButton>
-          {state?.active === "1" ? "Active" : "Inactive"}
+        {state?.active === "1" ? "High/Low" : "High/Low"}
         </FrameButton>
         <FrameButton>
-          {state?.active === "2" ? "Active" : "Inactive"}
+          {state?.active === "2" ? "Leaderboard" : "Leaderboard"}
         </FrameButton>
         <FrameButton
           action="mint"
