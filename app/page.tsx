@@ -3,6 +3,7 @@ import { currentURL, vercelURL } from "./utils";
 import { createDebugUrl } from "./debug";
 import type { Metadata } from "next";
 import { fetchMetadata } from "frames.js/next";
+import Providers from "./components/providers";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
