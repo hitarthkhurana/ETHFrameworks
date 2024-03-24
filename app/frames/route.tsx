@@ -233,7 +233,7 @@ const handleRequest = frames(async (ctx) => {
         Reset
       </Button>,
         <Button
-        key="lifeStory" // Unique key for this button
+        key="lifeStory" 
         action="link"
         target="https://imgur.com/a/fH7p0pK"
       >
