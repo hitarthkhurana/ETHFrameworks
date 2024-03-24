@@ -6,10 +6,21 @@ const frames = createFrames({
   basePath: "/frames",
 });
 
-const handleRequest = frames(async (ctx) => {
+  const handleRequest = frames(async (ctx) => {
   const pageIndex = Number(ctx.searchParams.pageIndex || 0);
   const rouletteOutcome = ctx.searchParams.rouletteOutcome; // This could be 'win', 'lose', or undefined
-
+  const images = [
+    {
+      src: "https://tableforchange.com/wp-content/uploads/2020/08/1_1431500821-1.jpg"
+    },
+    {
+      src: "https://assets-global.website-files.com/6344c9cef89d6f2270a38908/658620295b0868b3ba611370_What%20is%20a%20Blockchain%20Developer%20A%2B%20Guide%20For%20Hiring%20in%202024.webp"
+      
+    },
+    {
+      src: "https://remote-image.decentralized-content.com/image?url=https%3A%2F%2Fgifyu.com%2Fimage%2FSVKbw&w=1920&q=75",
+    },
+  ];
   let pageContent;
 
   if (pageIndex == 0) {
@@ -27,15 +38,16 @@ const handleRequest = frames(async (ctx) => {
     pageContent = "ROULETTE";
   }
 
-  const imageUrl = `https://picsum.photos/seed/frames.js-${pageIndex}/300/200`;
+  
 
   return {
-    image: (
-      <div tw="flex flex-col">
-        <img width={300} height={200} src={imageUrl} alt="Image" />
-        <div tw="flex">{pageContent}</div>
-      </div>
-    ),
+    image: images[pageIndex % images.length]?.src,
+    imageOptions: {
+    aspectRatio: "1:1",
+    overlaytext: pageContent,
+  },
+    text: pageContent  
+    ,
     buttons: [
       <Button
         action="post"

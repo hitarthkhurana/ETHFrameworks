@@ -16,7 +16,8 @@ const nfts: {
     }),
   },
   {
-    src: "https://remote-image.decentralized-content.com/image?url=https%3A%2F%2Fipfs.decentralized-content.com%2Fipfs%2Fbafybeiegrnialwu66u3nwzkn4gik4i2x2h4ip7y3w2dlymzlpxb5lrqbom&w=1920&q=75",
+    src: "https://remote-image.decentralized-content.com/image?url=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.08eb5b663e03a6831ed45950f08c1385%3Frik%3D26uWPOidUuRxEA%26pid%3DImgRaw%26r%3D0&w=1920&q=75"
+  ,
     tokenUrl: getTokenUrl({
       address: "0x060f3edd18c47f59bd23d063bbeb9aa4a8fec6df",
       chain: zora,
