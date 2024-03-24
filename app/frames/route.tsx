@@ -232,18 +232,14 @@ const handleRequest = frames(async (ctx) => {
       >
         Reset
       </Button>,
-      <Button
-        key="reset"
-        action="post"
-        target={
-          {
-            //   query: { pageIndex: 0 },
-          }
-        }
+        <Button
+        key="lifeStory" // Unique key for this button
+        action="link"
+        target="https://imgur.com/a/fH7p0pK"
       >
-        Mint NFT
+        Get your Generated Life Story
       </Button>,
-    ];
+];
   }
   const prompt = generatePrompt(inputTextArray);
   const img = processImageGeneration(prompt, "../ImageAI/assets");
