@@ -17,7 +17,8 @@ const handleRequest = frames(async (ctx) => {
       src: "https://tableforchange.com/wp-content/uploads/2020/08/1_1431500821-1.jpg",
     },
     {
-      src: "https://assets-global.website-files.com/6344c9cef89d6f2270a38908/658620295b0868b3ba611370_What%20is%20a%20Blockchain%20Developer%20A%2B%20Guide%20For%20Hiring%20in%202024.webp",
+      src: "https://tse1.mm.bing.net/th/id/OIG2.Nj7YX8.GvVCbj2NalUxM?pid=ImgGn"
+,
     },
     {
       src: "https://remote-image.decentralized-content.com/image?url=https%3A%2F%2Fgifyu.com%2Fimage%2FSVKbw&w=1920&q=75",
