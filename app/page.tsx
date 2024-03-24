@@ -21,7 +21,7 @@ export default async function Home() {
 
   return (
     <div>
-      Multi-page example
+      GAME OF LIFE ON WARPCAST. ARE YOU READY TO PLAY?
       <Link href={createDebugUrl(url)} className="underline">
         Debug
       </Link>
