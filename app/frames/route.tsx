@@ -136,7 +136,7 @@ function addInputText(inputTextArray: string[], inputText: string): void {
       </Button>,
     ];
   } else if (pageIndex == 3) {
-    inputField = "Choose your profession";
+    inputField = "Choose your profession!";
     addInputText(inputTextArray, ctx.message?.inputText);
     console.log(inputTextArray);
     buttons = [
