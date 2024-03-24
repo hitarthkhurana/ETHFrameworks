@@ -4,12 +4,20 @@ import { FrameInput } from "frames.js/next/server";
 import { text } from "stream/consumers";
 import { FrameUI, fallbackFrameContext } from "frames.js/render";
 
+let inputTextArray: string[] = [];
+
 const totalPages = 6;
 let buttons;
+
+
 
 const frames = createFrames({
   basePath: "/frames",
 });
+
+function addInputText(inputTextArray: string[], inputText: string): void {
+  inputTextArray.push(inputText);
+}
 
 const handleRequest = frames(async (ctx) => {
   const pageIndex = Number(ctx.searchParams.pageIndex || 0);
@@ -43,6 +51,8 @@ const handleRequest = frames(async (ctx) => {
 
   if (pageIndex == 0) {
     pageContent = "Your Cards";
+    addInputText(inputTextArray,ctx.message?.inputText);
+    console.log(inputTextArray);
     buttons = [
       <Button
         key="next"
@@ -57,6 +67,8 @@ const handleRequest = frames(async (ctx) => {
     inputField = "Choose: Blue Pill or Red Pill";
   } else if (pageIndex == 1) {
     inputField = "Choose your location ";
+    addInputText(inputTextArray,ctx.message?.inputText);
+    console.log(inputTextArray);
     buttons = [
       <Button
         key="reset"
@@ -88,6 +100,8 @@ const handleRequest = frames(async (ctx) => {
     ];
   } else if (pageIndex == 2) {
     inputField = "Choose your pet";
+    addInputText(inputTextArray,ctx.message?.inputText);
+    console.log(inputTextArray);
     buttons = [
       <Button
         key="reset"
@@ -119,6 +133,8 @@ const handleRequest = frames(async (ctx) => {
     ];
   } else if (pageIndex == 3) {
     inputField = "Choose your profession";
+    addInputText(inputTextArray,ctx.message?.inputText);
+    console.log(inputTextArray);
     buttons = [
       <Button
         key="reset"
@@ -150,6 +166,8 @@ const handleRequest = frames(async (ctx) => {
     ];
   } else if (pageIndex == 4) {
     inputField = "Choose your gender";
+    //addInputText(inputTextArray,ctx.message?.inputText);
+    //console.log(inputTextArray);
     buttons = [
       <Button
         key="reset"
@@ -180,6 +198,8 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
     ];
   } else if (pageIndex == 5) {
+    addInputText(inputTextArray,ctx.message?.inputText);
+   
     inputField = "";
     buttons = [
       <Button
@@ -193,6 +213,8 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
     ];
   } else if (pageIndex == 6) {
+    console.log(inputTextArray);
+    inputTextArray = [];
     buttons = [
       <Button
         key="reset"
