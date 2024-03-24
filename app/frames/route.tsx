@@ -4,6 +4,7 @@ import { FrameInput } from "frames.js/next/server";
 import { text } from "stream/consumers";
 
 const totalPages = 6;
+let buttons;
 
 const frames = createFrames({
   basePath: "/frames",
@@ -17,8 +18,7 @@ const handleRequest = frames(async (ctx) => {
       src: "https://tableforchange.com/wp-content/uploads/2020/08/1_1431500821-1.jpg",
     },
     {
-      src: "https://tse1.mm.bing.net/th/id/OIG2.Nj7YX8.GvVCbj2NalUxM?pid=ImgGn"
-,
+      src: "https://tse1.mm.bing.net/th/id/OIG2.Nj7YX8.GvVCbj2NalUxM?pid=ImgGn",
     },
     {
       src: "https://tse3.mm.bing.net/th/id/OIG2.X3eSGkSHUgxEF2w4Pi8v?pid=ImgGn",
@@ -27,8 +27,7 @@ const handleRequest = frames(async (ctx) => {
       src: "https://tableforchange.com/wp-content/uploads/2020/08/1_1431500821-1.jpg",
     },
     {
-      src: "https://tse1.mm.bing.net/th/id/OIG2.Nj7YX8.GvVCbj2NalUxM?pid=ImgGn"
-,
+      src: "https://tse1.mm.bing.net/th/id/OIG2.Nj7YX8.GvVCbj2NalUxM?pid=ImgGn",
     },
     {
       src: "https://tse1.mm.bing.net/th/id/OIG2.8t1Ti4bnrEnIeu66EUFg?pid=ImgGn",
@@ -40,41 +39,23 @@ const handleRequest = frames(async (ctx) => {
 
   if (pageIndex == 0) {
     pageContent = "Your Cards";
+    buttons = [
+      <Button
+        key="next"
+        action="post"
+        target={{
+          query: { pageIndex: 1 },
+        }}
+      >
+        Next
+      </Button>,
+    ];
     inputField = "Choose: Blue Pill or Red Pill";
   } else if (pageIndex == 1) {
     inputField = "Choose: Mars, India or Rome";
-    if (rouletteOutcome === "win") {
-      pageContent = ": You won!";
-    } else if (rouletteOutcome === "lose") {
-      pageContent = ": You lost!";
-    }
-  } else if (pageIndex == 2) {
-    pageContent = "ROULETTE";
-    inputField = "Choose: Mars, India or Rome";
-  }
-  else if (pageIndex == 3) {
-    pageContent = "Your Cards";
-    inputField = "Choose: Mars, India or Rome";
-  }
-  else if (pageIndex == 4) {
-    pageContent = "Your Cards";
-    inputField = "Choose: Mars, India or Rome";
-  }
-  else if (pageIndex == 5) {
-    pageContent = "Your Cards";
-    inputField = "Choose: Mars, India or Rome";
-  }
-
-  return {
-    image: (pageIndex >= 0 && pageIndex < images.length && images[pageIndex]) ? images[pageIndex]?.src : "default_image_url",
-    imageOptions: {
-      aspectRatio: "1:1",
-      overlaytext: pageContent,
-    },
-    text: pageContent,
-    buttons: [
-      // eslint-disable-next-line react/jsx-key
+    buttons = [
       <Button
+        key="reset"
         action="post"
         target={{
           query: { pageIndex: 0 },
@@ -82,26 +63,114 @@ const handleRequest = frames(async (ctx) => {
       >
         Reset
       </Button>,
-            // eslint-disable-next-line react/jsx-key
-            <Button
-            action="post"
-            target={{
-              query: { pageIndex: 5 },
-            }}
-          >
-            Back
-          </Button>,
-      // eslint-disable-next-line react/jsx-key
       <Button
+        key="next"
         action="post"
         target={{
-          query: { pageIndex: (pageIndex + 1) % totalPages },
+          query: { pageIndex: 2 },
         }}
       >
         Next
       </Button>,
-      // eslint-disable-next-line react/jsx-key
-    ],
+    ];
+  } else if (pageIndex == 2) {
+    inputField = "Choose any pet";
+    buttons = [
+      <Button
+        key="reset"
+        action="post"
+        target={{
+          query: { pageIndex: 0 },
+        }}
+      >
+        Reset
+      </Button>,
+      <Button
+        key="next"
+        action="post"
+        target={{
+          query: { pageIndex: 3 },
+        }}
+      >
+        Next
+      </Button>,
+    ];
+  } else if (pageIndex == 3) {
+    buttons = [
+      <Button
+        key="reset"
+        action="post"
+        target={{
+          query: { pageIndex: 0 },
+        }}
+      >
+        Reset
+      </Button>,
+      <Button
+        key="next"
+        action="post"
+        target={{
+          query: { pageIndex: 4 },
+        }}
+      >
+        Next
+      </Button>,
+    ];
+  } else if (pageIndex == 4) {
+    buttons = [
+      <Button
+        key="reset"
+        action="post"
+        target={{
+          query: { pageIndex: 0 },
+        }}
+      >
+        Reset
+      </Button>,
+      <Button
+        key="next"
+        action="post"
+        target={{
+          query: { pageIndex: 5 },
+        }}
+      >
+        Next
+      </Button>,
+    ];
+  } else if (pageIndex == 5) {
+    buttons = [
+      <Button
+        key="reset"
+        action="post"
+        target={{
+          query: { pageIndex: 0 },
+        }}
+      >
+        Reset
+      </Button>,
+      <Button
+        key="next"
+        action="post"
+        target={{
+          query: { pageIndex: 6 },
+        }}
+      >
+        Next
+      </Button>,
+    ];
+  }
+
+  return {
+    image:
+      pageIndex >= 0 && pageIndex < images.length && images[pageIndex]
+        ? images[pageIndex]?.src
+        : "default_image_url",
+    imageOptions: {
+      aspectRatio: "1:1",
+      overlaytext: pageContent,
+    },
+    text: pageContent,
+    buttons,
     textInput: inputField,
   };
 });
