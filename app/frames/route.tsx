@@ -21,7 +21,7 @@ const handleRequest = frames(async (ctx) => {
 ,
     },
     {
-      src: "https://tse4.mm.bing.net/th/id/OIG1.UbTYUMQYk8VqYuA1nq8Z?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn",
+      src: "https://tse3.mm.bing.net/th/id/OIG2.X3eSGkSHUgxEF2w4Pi8v?pid=ImgGn",
     },
     {
       src: "https://tableforchange.com/wp-content/uploads/2020/08/1_1431500821-1.jpg",
@@ -31,7 +31,7 @@ const handleRequest = frames(async (ctx) => {
 ,
     },
     {
-      text: "You can't go back in the GAME OF LIFE",
+      src: "https://tse1.mm.bing.net/th/id/OIG2.8t1Ti4bnrEnIeu66EUFg?pid=ImgGn",
     },
   ];
   let pageContent;
@@ -50,15 +50,19 @@ const handleRequest = frames(async (ctx) => {
     }
   } else if (pageIndex == 2) {
     pageContent = "ROULETTE";
+    inputField = "Choose: Mars, India or Rome";
   }
   else if (pageIndex == 3) {
     pageContent = "Your Cards";
+    inputField = "Choose: Mars, India or Rome";
   }
   else if (pageIndex == 4) {
     pageContent = "Your Cards";
+    inputField = "Choose: Mars, India or Rome";
   }
   else if (pageIndex == 5) {
     pageContent = "Your Cards";
+    inputField = "Choose: Mars, India or Rome";
   }
 
   return {
@@ -82,7 +86,7 @@ const handleRequest = frames(async (ctx) => {
             <Button
             action="post"
             target={{
-              query: { pageIndex: 6 },
+              query: { pageIndex: 5 },
             }}
           >
             Back
