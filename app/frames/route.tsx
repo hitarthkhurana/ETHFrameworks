@@ -1,24 +1,26 @@
 import { createFrames, Button } from "frames.js/next";
 import Hello from "../components/hello";
+import { FrameInput } from "frames.js/next/server";
+import { text } from "stream/consumers";
 
 const totalPages = 5;
 
 const frames = createFrames({
   basePath: "/frames",
 });
-
 const handleRequest = frames(async (ctx) => {
   const pageIndex = Number(ctx.searchParams.pageIndex || 0);
-  const rouletteOutcome = ctx.searchParams.rouletteOutcome; // This could be 'win', 'lose', or undefined
+  const rouletteOutcome = ctx.searchParams.rouletteOutcome;
+  // This could be 'win', 'lose', or undefined
 
   let pageContent;
   let inputField;
+  let storeInput;
 
   if (pageIndex == 0) {
     pageContent = "Your Cards";
     inputField = "Your cards";
   } else if (pageIndex == 1) {
-    pageContent = "HIGHER LOWER";
     inputField = "Higher Lower";
     if (rouletteOutcome === "win") {
       pageContent = ": You won!";
@@ -36,6 +38,7 @@ const handleRequest = frames(async (ctx) => {
       <div tw="flex flex-col">
         <img width={300} height={200} src={imageUrl} alt="Image" />
         <div tw="flex">{pageContent}</div>
+        {ctx.message?.inputText ? `, ${ctx.message?.inputText}` : ""}
       </div>
     ),
     buttons: [
