@@ -1,7 +1,4 @@
-/* eslint-disable react/jsx-key */
 import { createFrames, Button } from "frames.js/next";
-
-const totalPages = 5;
 
 const frames = createFrames({
   basePath: "/frames",
@@ -9,8 +6,7 @@ const frames = createFrames({
 
 const handleRequest = frames(async (ctx) => {
   const pageIndex = Number(ctx.searchParams.pageIndex || 0);
-
-  const imageUrl = `https://picsum.photos/seed/frames.js-${pageIndex}/300/200`;
+  const rouletteOutcome = ctx.searchParams.rouletteOutcome; // This could be 'win', 'lose', or undefined
 
   let pageContent;
 
@@ -18,9 +14,17 @@ const handleRequest = frames(async (ctx) => {
     pageContent = "HOME";
   } else if (pageIndex == 1) {
     pageContent = "HIGHER LOWER";
+    // Modify this part to reflect roulette outcome
+    if (rouletteOutcome === 'win') {
+      pageContent += ": You won!";
+    } else if (rouletteOutcome === 'lose') {
+      pageContent += ": You lost!";
+    }
   } else if (pageIndex == 2) {
     pageContent = "ROULETTE";
   }
+
+  const imageUrl = `https://picsum.photos/seed/frames.js-${pageIndex}/300/200`;
 
   return {
     image: (
@@ -49,13 +53,20 @@ const handleRequest = frames(async (ctx) => {
       <Button
         action="post"
         target={{
-          query: { pageIndex: 2 },
+          query: { pageIndex: 1, rouletteOutcome: 'win' }, // Simulate a win
         }}
       >
-        Roulette
+        Spin and Win
+      </Button>,
+      <Button
+        action="post"
+        target={{
+          query: { pageIndex: 1, rouletteOutcome: 'lose' }, // Simulate a loss
+        }}
+      >
+        Spin and Lose
       </Button>,
     ],
-    textInput: "",
   };
 });
 
