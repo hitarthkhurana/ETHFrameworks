@@ -10,17 +10,14 @@ export async function generateMetadata(): Promise<Metadata> {
     description: "This is a new api example",
     other: {
       ...(await fetchMetadata(
-        new URL(
-          "/examples/new-api-multi-page/frames",
-          vercelURL() || "http://localhost:3000"
-        )
+        new URL("/frames", vercelURL() || "http://localhost:3000")
       )),
     },
   };
 }
 
 export default async function Home() {
-  const url = currentURL("/examples/new-api-multi-page");
+  const url = currentURL("");
 
   return (
     <div>

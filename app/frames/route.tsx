@@ -4,7 +4,7 @@ import { createFrames, Button } from "frames.js/next";
 const totalPages = 5;
 
 const frames = createFrames({
-  basePath: "/examples/new-api-multi-page/frames",
+  basePath: "/frames",
 });
 
 const handleRequest = frames(async (ctx) => {
@@ -17,7 +17,7 @@ const handleRequest = frames(async (ctx) => {
       <div tw="flex flex-col">
         <img width={300} height={200} src={imageUrl} alt="Image" />
         <div tw="flex">
-          This is slide {pageIndex + 1} / {totalPages}
+          {pageIndex + 1} / {totalPages}
         </div>
       </div>
     ),
@@ -39,7 +39,7 @@ const handleRequest = frames(async (ctx) => {
         →
       </Button>,
     ],
-    textInput: "Type something!",
+    textInput: "Input",
   };
 });
 
