@@ -9,7 +9,9 @@ import {
   processImageGeneration,
 } from "../ImageAI/OpenAI";
 
+
 let inputTextArray: string[] = [];
+let img: Promise<any>;
 
 const totalPages = 6;
 let buttons: any[] = [];
@@ -46,7 +48,7 @@ const handleRequest = frames(async (ctx) => {
       src: "https://tse1.mm.bing.net/th/id/OIG2.8t1Ti4bnrEnIeu66EUFg?pid=ImgGn",
     },
     {
-      src: "https://oaidalleapiprodscus.blob.core.windows.net/private/org-KMPaxFsrupEb7wjd3YeWgV2I/user-Ok1yHxhi7qkBxSagBWDcHnJU/img-cG29E2YTx2qcEd17jIRtEKHi.png?st=2024-03-24T12%3A33%3A36Z&se=2024-03-24T14%3A33%3A36Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-03-23T21%3A14%3A05Z&ske=2024-03-24T21%3A14%3A05Z&sks=b&skv=2021-08-06&sig=d1zpIDzdKUllyL0ClbPXi9U/jjjtkQ7bzIpUA/cFhHI%3D",
+      src: img ? `${img}`: "https://tse1.mm.bing.net/th/id/OIG2.8t1Ti4bnrEnIeu66EUFg?pid=ImgGn",
     },
   ];
   let pageContent: string = ""; // Default value to ensure it's never undefined
@@ -220,6 +222,9 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
     ];
   } else if (pageIndex == 6) {
+    const prompt = generatePrompt(inputTextArray);
+    const imgProm = processImageGeneration(prompt, "../ImageAI/assets");
+    img = await imgProm;
     console.log(inputTextArray);
     inputTextArray = [];
     buttons = [
@@ -241,8 +246,6 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
 ];
   }
-  const prompt = generatePrompt(inputTextArray);
-  const img = processImageGeneration(prompt, "../ImageAI/assets");
 
   const safePageContent = pageContent || "";
   const safeInputField = inputField || "";

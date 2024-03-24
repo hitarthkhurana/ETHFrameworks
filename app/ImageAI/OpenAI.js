@@ -42,10 +42,10 @@ async function generateImageURL(prompt) {
         return null; 
     }
 }
-
 export async function processImageGeneration(prompt, folderPath) {
+    let imageUrl;
     try {
-        const imageUrl = await generateImageURL(prompt);
+        imageUrl = await generateImageURL(prompt);
         if (imageUrl) {
             await saveImageFromURL(imageUrl, folderPath);
             console.log("Generated image URL:", imageUrl);
@@ -55,8 +55,9 @@ export async function processImageGeneration(prompt, folderPath) {
     } catch (error) {
         console.error("Error processing image generation:", error);
     }
-    return imageUrl;
+    return imageUrl; // Return imageUrl only if it's defined
 }
+
 
 export function generatePrompt(categories) {
     const [activity, planet, pet, profession, gender] = categories;
