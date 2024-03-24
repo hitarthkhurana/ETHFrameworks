@@ -14,13 +14,14 @@ const handleRequest = frames(async (ctx) => {
 
   if (pageIndex == 0) {
     pageContent = "HOME";
+    pageContent = "Dealer's Card";
+    pageContent = "Your Cards";
   } else if (pageIndex == 1) {
     pageContent = "HIGHER LOWER";
-    // Modify this part to reflect roulette outcome
     if (rouletteOutcome === 'win') {
-      pageContent += ": You won!";
+      pageContent = ": You won!";
     } else if (rouletteOutcome === 'lose') {
-      pageContent += ": You lost!";
+      pageContent = ": You lost!";
     }
   } else if (pageIndex == 2) {
     pageContent = "ROULETTE";
@@ -55,7 +56,7 @@ const handleRequest = frames(async (ctx) => {
       <Button
         action="post"
         target={{
-          query: { pageIndex: 1, rouletteOutcome: 'win' }, // Simulate a win
+          query: { pageIndex: 1, rouletteOutcome: 'win' }, 
         }}
       >
         Spin and Win
@@ -63,7 +64,7 @@ const handleRequest = frames(async (ctx) => {
       <Button
         action="post"
         target={{
-          query: { pageIndex: 1, rouletteOutcome: 'lose' }, // Simulate a loss
+          query: { pageIndex: 1, rouletteOutcome: 'lose' }, 
         }}
       >
         Spin and Lose
