@@ -3,7 +3,7 @@ import Hello from "../components/hello";
 import { FrameInput } from "frames.js/next/server";
 import { text } from "stream/consumers";
 
-const totalPages = 5;
+const totalPages = 6;
 
 const frames = createFrames({
   basePath: "/frames",
@@ -21,7 +21,17 @@ const handleRequest = frames(async (ctx) => {
 ,
     },
     {
-      src: "https://remote-image.decentralized-content.com/image?url=https%3A%2F%2Fgifyu.com%2Fimage%2FSVKbw&w=1920&q=75",
+      src: "https://tse4.mm.bing.net/th/id/OIG1.UbTYUMQYk8VqYuA1nq8Z?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn",
+    },
+    {
+      src: "https://tableforchange.com/wp-content/uploads/2020/08/1_1431500821-1.jpg",
+    },
+    {
+      src: "https://tse1.mm.bing.net/th/id/OIG2.Nj7YX8.GvVCbj2NalUxM?pid=ImgGn"
+,
+    },
+    {
+      text: "You can't go back in the GAME OF LIFE",
     },
   ];
   let pageContent;
@@ -32,7 +42,7 @@ const handleRequest = frames(async (ctx) => {
     pageContent = "Your Cards";
     inputField = "Choose: Blue Pill or Red Pill";
   } else if (pageIndex == 1) {
-    inputField = "Higher Lower";
+    inputField = "Choose: Mars, India or Rome";
     if (rouletteOutcome === "win") {
       pageContent = ": You won!";
     } else if (rouletteOutcome === "lose") {
@@ -41,9 +51,18 @@ const handleRequest = frames(async (ctx) => {
   } else if (pageIndex == 2) {
     pageContent = "ROULETTE";
   }
+  else if (pageIndex == 3) {
+    pageContent = "Your Cards";
+  }
+  else if (pageIndex == 4) {
+    pageContent = "Your Cards";
+  }
+  else if (pageIndex == 5) {
+    pageContent = "Your Cards";
+  }
 
   return {
-    image: images[pageIndex % images.length]?.src || "default_image_url",
+    image: (pageIndex >= 0 && pageIndex < images.length && images[pageIndex]) ? images[pageIndex]?.src : "default_image_url",
     imageOptions: {
       aspectRatio: "1:1",
       overlaytext: pageContent,
@@ -57,13 +76,22 @@ const handleRequest = frames(async (ctx) => {
           query: { pageIndex: 0 },
         }}
       >
-        Back
+        Reset
       </Button>,
+            // eslint-disable-next-line react/jsx-key
+            <Button
+            action="post"
+            target={{
+              query: { pageIndex: 6 },
+            }}
+          >
+            Back
+          </Button>,
       // eslint-disable-next-line react/jsx-key
       <Button
         action="post"
         target={{
-          query: { pageIndex: 1 },
+          query: { pageIndex: (pageIndex + 1) % totalPages },
         }}
       >
         Next
