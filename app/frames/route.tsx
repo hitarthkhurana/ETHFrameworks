@@ -25,10 +25,10 @@ const handleRequest = frames(async (ctx) => {
       src: "https://tse3.mm.bing.net/th/id/OIG2.X3eSGkSHUgxEF2w4Pi8v?pid=ImgGn",
     },
     {
-      src: "https://tableforchange.com/wp-content/uploads/2020/08/1_1431500821-1.jpg",
+      src: "https://tse4.mm.bing.net/th/id/OIG2.ZBhjh8RcsEZdf71AlArq?pid=ImgGn",
     },
     {
-      src: "https://tse1.mm.bing.net/th/id/OIG2.Nj7YX8.GvVCbj2NalUxM?pid=ImgGn",
+      src: "https://tse4.mm.bing.net/th/id/OIG2.jbD_ALd9ZWF3zuMubKdi?pid=ImgGn",
     },
     {
       src: "https://tse1.mm.bing.net/th/id/OIG2.8t1Ti4bnrEnIeu66EUFg?pid=ImgGn",
