@@ -67,6 +67,15 @@ const handleRequest = frames(async (ctx) => {
         key="next"
         action="post"
         target={{
+          query: { pageIndex: 5 },
+        }}
+      >
+        Back
+      </Button>,
+      <Button
+        key="next"
+        action="post"
+        target={{
           query: { pageIndex: 2 },
         }}
       >
@@ -89,6 +98,15 @@ const handleRequest = frames(async (ctx) => {
         key="next"
         action="post"
         target={{
+          query: { pageIndex: 5 },
+        }}
+      >
+        Back
+      </Button>,
+      <Button
+        key="next"
+        action="post"
+        target={{
           query: { pageIndex: 3 },
         }}
       >
@@ -105,6 +123,15 @@ const handleRequest = frames(async (ctx) => {
         }}
       >
         Reset
+      </Button>,
+      <Button
+        key="next"
+        action="post"
+        target={{
+          query: { pageIndex: 5 },
+        }}
+      >
+        Back
       </Button>,
       <Button
         key="next"
@@ -134,6 +161,15 @@ const handleRequest = frames(async (ctx) => {
           query: { pageIndex: 5 },
         }}
       >
+        Back
+      </Button>,
+      <Button
+        key="next"
+        action="post"
+        target={{
+          query: { pageIndex: 6 },
+        }}
+      >
         Next
       </Button>,
     ];
@@ -147,15 +183,6 @@ const handleRequest = frames(async (ctx) => {
         }}
       >
         Reset
-      </Button>,
-      <Button
-        key="next"
-        action="post"
-        target={{
-          query: { pageIndex: 6 },
-        }}
-      >
-        Next
       </Button>,
     ];
   }
