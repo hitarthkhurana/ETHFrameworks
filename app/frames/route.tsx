@@ -45,7 +45,7 @@ const frames = createFrames({
   
 
   return {
-    image: images[pageIndex % images.length]?.src,
+    image: images[pageIndex % images.length]?.src || 'default_image_url',
     imageOptions: {
     aspectRatio: "1:1",
     overlaytext: pageContent,
