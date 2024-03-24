@@ -15,18 +15,11 @@ const handleRequest = frames(async (ctx) => {
   let pageContent;
 
   if (pageIndex == 0) {
-    pageContent = "This is the first page";
-    // imageUrl =
+    pageContent = "HOME";
   } else if (pageIndex == 1) {
-    pageContent = "This is the second page";
+    pageContent = "HIGHER LOWER";
   } else if (pageIndex == 2) {
-    pageContent = "This is the third page";
-  } else if (pageIndex == 3) {
-    pageContent = "This is the fourth page";
-  } else if (pageIndex == 4) {
-    pageContent = "This is the fifth page";
-  } else {
-    pageContent = "This is the last page";
+    pageContent = "ROULETTE";
   }
 
   return {
@@ -40,21 +33,29 @@ const handleRequest = frames(async (ctx) => {
       <Button
         action="post"
         target={{
-          query: { pageIndex: (pageIndex - 1) % totalPages },
+          query: { pageIndex: 0 },
         }}
       >
-        ←
+        Home
       </Button>,
       <Button
         action="post"
         target={{
-          query: { pageIndex: (pageIndex + 1) % totalPages },
+          query: { pageIndex: 1 },
         }}
       >
-        →
+        Higher/Lower
+      </Button>,
+      <Button
+        action="post"
+        target={{
+          query: { pageIndex: 2 },
+        }}
+      >
+        Roulette
       </Button>,
     ],
-    textInput: "Input",
+    textInput: "",
   };
 });
 
