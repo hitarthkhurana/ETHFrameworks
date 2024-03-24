@@ -56,7 +56,7 @@ const handleRequest = frames(async (ctx) => {
           query: { pageIndex: 0 },
         }}
       >
-        Home
+        Back
       </Button>,
       // eslint-disable-next-line react/jsx-key
       <Button
@@ -65,26 +65,9 @@ const handleRequest = frames(async (ctx) => {
           query: { pageIndex: 1 },
         }}
       >
-        Higher/Lower
+        Next
       </Button>,
       // eslint-disable-next-line react/jsx-key
-      <Button
-        action="post"
-        target={{
-          query: { pageIndex: 1, rouletteOutcome: "win" },
-        }}
-      >
-        Spin and Win
-      </Button>,
-      // eslint-disable-next-line react/jsx-key
-      <Button
-        action="post"
-        target={{
-          query: { pageIndex: 1, rouletteOutcome: "lose" },
-        }}
-      >
-        Spin and Lose
-      </Button>,
     ],
     textInput: inputField,
   };
