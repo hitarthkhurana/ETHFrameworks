@@ -5,7 +5,8 @@ const OpenAI = require("openai");
 const dotenv = require('dotenv');
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+    
+    apiKey: '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',
 });
 
 const folderPath = path.join(__dirname, "assets"); 
