@@ -56,7 +56,7 @@ const handleRequest = frames(async (ctx) => {
     ];
     inputField = "Choose: Blue Pill or Red Pill";
   } else if (pageIndex == 1) {
-    inputField = "Choose: Mars, India or Rome";
+    inputField = "Choose any place you like ";
     buttons = [
       <Button
         key="reset"
@@ -118,6 +118,7 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
     ];
   } else if (pageIndex == 3) {
+    inputField = "Choose any profession you like";
     buttons = [
       <Button
         key="reset"
@@ -148,6 +149,7 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
     ];
   } else if (pageIndex == 4) {
+    inputField = "Choose your gender";
     buttons = [
       <Button
         key="reset"
@@ -178,6 +180,7 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
     ];
   } else if (pageIndex == 5) {
+    inputField = "Choose your gender";
     buttons = [
       <Button
         key="reset"
