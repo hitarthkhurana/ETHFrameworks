@@ -48,7 +48,7 @@ const handleRequest = frames(async (ctx) => {
       src: "https://tse1.mm.bing.net/th/id/OIG2.8t1Ti4bnrEnIeu66EUFg?pid=ImgGn",
     },
     {
-      src: img ? `${img}`: "https://tse1.mm.bing.net/th/id/OIG2.8t1Ti4bnrEnIeu66EUFg?pid=ImgGn",
+      src: "default_image_url",
     },
   ];
   let pageContent: string = ""; // Default value to ensure it's never undefined
@@ -223,9 +223,10 @@ const handleRequest = frames(async (ctx) => {
     ];
   } else if (pageIndex == 6) {
     const prompt = generatePrompt(inputTextArray);
-    const imgProm = processImageGeneration(prompt, "../ImageAI/assets");
-    img = await imgProm;
-    console.log(inputTextArray);
+    const generatedImageUrl= await processImageGeneration(prompt, "../ImageAI/assets");
+    console.log("Generated Image URL:", generatedImageUrl);
+    images[images.length - 1].src = generatedImageUrl || "default_fallback_image_url";
+    
     inputTextArray = [];
     buttons = [
       <Button
@@ -240,7 +241,7 @@ const handleRequest = frames(async (ctx) => {
         <Button
         key="lifeStory" 
         action="link"
-        target="https://imgur.com/a/fH7p0pK"
+        target="generatedImageURL"
       >
         Get your Generated Life Story
       </Button>,
