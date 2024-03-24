@@ -12,13 +12,28 @@ const handleRequest = frames(async (ctx) => {
 
   const imageUrl = `https://picsum.photos/seed/frames.js-${pageIndex}/300/200`;
 
+  let pageContent;
+
+  if (pageIndex == 0) {
+    pageContent = "This is the first page";
+    // imageUrl =
+  } else if (pageIndex == 1) {
+    pageContent = "This is the second page";
+  } else if (pageIndex == 2) {
+    pageContent = "This is the third page";
+  } else if (pageIndex == 3) {
+    pageContent = "This is the fourth page";
+  } else if (pageIndex == 4) {
+    pageContent = "This is the fifth page";
+  } else {
+    pageContent = "This is the last page";
+  }
+
   return {
     image: (
       <div tw="flex flex-col">
         <img width={300} height={200} src={imageUrl} alt="Image" />
-        <div tw="flex">
-          {pageIndex + 1} / {totalPages}
-        </div>
+        <div tw="flex">{pageContent}</div>
       </div>
     ),
     buttons: [
