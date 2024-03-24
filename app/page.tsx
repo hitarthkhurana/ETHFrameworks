@@ -72,7 +72,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
         state={state}
         previousFrame={previousFrame}
       >
-        <FrameImage src="https://api.deepai.org/job-view-file/1f74fe8c-72bd-48ea-81d9-6c7d8c922d07/outputs/output.jpg" />
+        <FrameImage src="/casino.jpeg" />
         {/* <FrameImage aspectRatio="1.91:1">
           <div tw="w-full h-full bg-purple-700 text-black justify-center items-center flex flex-col">
             <div tw="flex flex-row">
