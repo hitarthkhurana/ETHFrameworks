@@ -1,5 +1,4 @@
 import { createFrames, Button } from "frames.js/next";
-import Hello from "../components/hello";
 import { FrameInput } from "frames.js/next/server";
 import { text } from "stream/consumers";
 import { FrameUI, fallbackFrameContext } from "frames.js/render";
@@ -7,9 +6,7 @@ import { FrameUI, fallbackFrameContext } from "frames.js/render";
 let inputTextArray: string[] = [];
 
 const totalPages = 6;
-let buttons;
-
-
+let buttons: any[] = [];
 
 const frames = createFrames({
   basePath: "/frames",
@@ -51,7 +48,7 @@ const handleRequest = frames(async (ctx) => {
 
   if (pageIndex == 0) {
     pageContent = "Your Cards";
-    addInputText(inputTextArray,ctx.message?.inputText);
+    addInputText(inputTextArray, ctx.message?.inputText);
     console.log(inputTextArray);
     buttons = [
       <Button
@@ -67,7 +64,7 @@ const handleRequest = frames(async (ctx) => {
     inputField = "Choose: Blue Pill or Red Pill";
   } else if (pageIndex == 1) {
     inputField = "Choose your location ";
-    addInputText(inputTextArray,ctx.message?.inputText);
+    addInputText(inputTextArray, ctx.message?.inputText);
     console.log(inputTextArray);
     buttons = [
       <Button
@@ -100,7 +97,7 @@ const handleRequest = frames(async (ctx) => {
     ];
   } else if (pageIndex == 2) {
     inputField = "Choose your pet";
-    addInputText(inputTextArray,ctx.message?.inputText);
+    addInputText(inputTextArray, ctx.message?.inputText);
     console.log(inputTextArray);
     buttons = [
       <Button
@@ -133,7 +130,7 @@ const handleRequest = frames(async (ctx) => {
     ];
   } else if (pageIndex == 3) {
     inputField = "Choose your profession";
-    addInputText(inputTextArray,ctx.message?.inputText);
+    addInputText(inputTextArray, ctx.message?.inputText);
     console.log(inputTextArray);
     buttons = [
       <Button
@@ -198,8 +195,8 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
     ];
   } else if (pageIndex == 5) {
-    addInputText(inputTextArray,ctx.message?.inputText);
-   
+    addInputText(inputTextArray, ctx.message?.inputText);
+
     inputField = "";
     buttons = [
       <Button
