@@ -49,6 +49,7 @@ const handleRequest = frames(async (ctx) => {
     },
     {
       src: "default_image_url",
+      src: "default_image_url",
     },
   ];
   let pageContent: string = ""; // Default value to ensure it's never undefined
