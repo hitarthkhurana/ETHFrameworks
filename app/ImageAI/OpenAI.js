@@ -2,9 +2,10 @@ const fs = require('fs');
 const axios = require('axios');
 const path = require('path');
 const OpenAI = require("openai");
+const dotenv = require('dotenv');
 
 const openai = new OpenAI({
-    apiKey: '',
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
 const folderPath = path.join(__dirname, "assets"); 
@@ -47,7 +48,7 @@ export async function processImageGeneration(prompt, folderPath) {
     try {
         imageUrl = await generateImageURL(prompt);
         if (imageUrl) {
-            await saveImageFromURL(imageUrl, folderPath);
+            // await saveImageFromURL(imageUrl, folderPath);
             console.log("Generated image URL:", imageUrl);
         } else {
             console.log("Failed to generate image.");
@@ -60,8 +61,8 @@ export async function processImageGeneration(prompt, folderPath) {
 
 
 export function generatePrompt(categories) {
-    const [activity, planet, pet, profession, gender] = categories;
-    return `Generate an image of a ${gender} ${profession} who has a pet ${pet}, and they live on ${planet}. Their favorite thing to do is ${activity}.`;
+    const [skip, activity, planet, pet, profession] = categories;
+    return `Generate an image of a ${profession} who has a pet ${pet}, and they live on ${planet}. They chose the ${activity}. MAKE A HD image of this scene`;
 }
 
 // Example input categories

@@ -174,9 +174,9 @@ const handleRequest = frames(async (ctx) => {
       </Button>,
     ];
   } else if (pageIndex == 4) {
-    inputField = "Choose your gender";
-    //addInputText(inputTextArray,ctx.message?.inputText);
-    //console.log(inputTextArray);
+    inputField = "";
+    addInputText(inputTextArray,ctx.message?.inputText);
+    console.log(inputTextArray);
     buttons = [
       <Button
         key="reset"
@@ -203,12 +203,10 @@ const handleRequest = frames(async (ctx) => {
           query: { pageIndex: 6 },
         }}
       >
-        Next
+        Mint
       </Button>,
     ];
   } else if (pageIndex == 5) {
-    addInputText(inputTextArray, ctx.message?.inputText);
-
     inputField = "";
     buttons = [
       <Button
