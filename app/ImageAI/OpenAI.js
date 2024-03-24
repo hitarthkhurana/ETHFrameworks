@@ -4,7 +4,7 @@ const path = require('path');
 const OpenAI = require("openai");
 
 const openai = new OpenAI({
-    apiKey: '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',
+    apiKey: '',
 });
 
 const folderPath = path.join(__dirname, "assets"); 
@@ -55,10 +55,11 @@ export async function processImageGeneration(prompt, folderPath) {
     } catch (error) {
         console.error("Error processing image generation:", error);
     }
+    return imageUrl;
 }
 
 export function generatePrompt(categories) {
-    const [profession, pet, planet, activity, gender] = categories;
+    const [activity, planet, pet, profession, gender] = categories;
     return `Generate an image of a ${gender} ${profession} who has a pet ${pet}, and they live on ${planet}. Their favorite thing to do is ${activity}.`;
 }
 

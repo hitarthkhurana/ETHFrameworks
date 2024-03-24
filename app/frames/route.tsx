@@ -246,7 +246,7 @@ const handleRequest = frames(async (ctx) => {
     ];
   }
   const prompt = generatePrompt(inputTextArray);
-  processImageGeneration(prompt, "../ImageAI/assets");
+  const img = processImageGeneration(prompt, "../ImageAI/assets");
 
   const safePageContent = pageContent || "";
   const safeInputField = inputField || "";
