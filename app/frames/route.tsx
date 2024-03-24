@@ -1,4 +1,5 @@
 import { createFrames, Button } from "frames.js/next";
+import Hello from "../components/hello";
 
 const totalPages = 5;
 
@@ -11,16 +12,17 @@ const handleRequest = frames(async (ctx) => {
   const rouletteOutcome = ctx.searchParams.rouletteOutcome; // This could be 'win', 'lose', or undefined
 
   let pageContent;
+  let inputField;
 
   if (pageIndex == 0) {
-    pageContent = "HOME";
-    pageContent = "Dealer's Card";
     pageContent = "Your Cards";
+    inputField = "Your cards";
   } else if (pageIndex == 1) {
     pageContent = "HIGHER LOWER";
-    if (rouletteOutcome === 'win') {
+    inputField = "Higher Lower";
+    if (rouletteOutcome === "win") {
       pageContent = ": You won!";
-    } else if (rouletteOutcome === 'lose') {
+    } else if (rouletteOutcome === "lose") {
       pageContent = ": You lost!";
     }
   } else if (pageIndex == 2) {
@@ -37,6 +39,7 @@ const handleRequest = frames(async (ctx) => {
       </div>
     ),
     buttons: [
+      // eslint-disable-next-line react/jsx-key
       <Button
         action="post"
         target={{
@@ -45,6 +48,7 @@ const handleRequest = frames(async (ctx) => {
       >
         Home
       </Button>,
+      // eslint-disable-next-line react/jsx-key
       <Button
         action="post"
         target={{
@@ -53,23 +57,26 @@ const handleRequest = frames(async (ctx) => {
       >
         Higher/Lower
       </Button>,
+      // eslint-disable-next-line react/jsx-key
       <Button
         action="post"
         target={{
-          query: { pageIndex: 1, rouletteOutcome: 'win' }, 
+          query: { pageIndex: 1, rouletteOutcome: "win" },
         }}
       >
         Spin and Win
       </Button>,
+      // eslint-disable-next-line react/jsx-key
       <Button
         action="post"
         target={{
-          query: { pageIndex: 1, rouletteOutcome: 'lose' }, 
+          query: { pageIndex: 1, rouletteOutcome: "lose" },
         }}
       >
         Spin and Lose
       </Button>,
     ],
+    textInput: inputField,
   };
 });
 
